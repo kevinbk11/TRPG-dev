@@ -211,21 +211,20 @@ void save()
 int z;
 void ingame()
 {
-	int owo = 0;
+	int owo;
 	cout << endl;
 	while (1)
 	{
 		srand(time(NULL));
-		cout << "K來戰鬥 輸入N前往下一張地圖 輸入L前往上一張地圖 C查看角色資料 \nS手動存檔 Q來換裝備 P查看該地NPC I查看道具欄 輸入其他按鍵離開" << endl;
+		cout << "K來戰鬥 輸入N前往下一張地圖 輸入L前往上一張地圖 C查看角色資料 \nS手動存檔 Q來換裝備 P查看該地NPC I查看道具欄 輸入0離開" << endl;
 		cout << "\n目前所在地:" << where(map) << endl << endl;
 		save();
-		if (owo == 1)
+		if (cin.fail())
 		{
 			save();
 			cout << "已離開 可能是錯誤或者手動離開" << endl;
 			break;
 		}
-		owo = 1;
 		if (player.job == "fighter")
 		{
 			player.basicStr = (player.level * 2.5);
@@ -269,6 +268,11 @@ void ingame()
 		}
 		string move;
 		cin >> move;
+		if (move == "0")
+		{
+			cout << "\n已離開,感謝您的遊玩!\n";
+			break;
+		}
 		if (move == "i" or move == "I")
 		{
 			for (int g = 0; g <= 99; g++)
@@ -276,7 +280,6 @@ void ingame()
 				if (bagcount[g] == 0)bag[g] = "none";
 			}
 			system("cls");
-			owo = 0;
 			cout << "道具名稱" << setw(12) << "數量" << endl << endl;
 			int f = 1;
 			for (int x = 0; x<=99; x++)
@@ -316,6 +319,10 @@ void ingame()
 			system("cls");
 			while (1)
 			{
+				if (cin.fail())
+				{
+					break;
+				}
 				if (npc(map) == 1)
 				{
 					int owowo = 0;
@@ -326,7 +333,7 @@ void ingame()
 					cin >> ckk;
 					if (ckk == 0)
 					{
-						owo = 0;
+						 
 						break;
 					}
 					int w = 1;
@@ -334,6 +341,10 @@ void ingame()
 					{
 						while (1)
 						{
+							if (cin.fail())
+							{
+								break;
+							}
 							cout << "\n對話按1 進入商店按2 離開按0\n";
 							cin >> w;
 							if (w == 0)break;
@@ -345,6 +356,10 @@ void ingame()
 					{
 						while (1)
 						{
+							if (cin.fail())
+							{
+								break;
+							}
 							cout << "\n對話按1 進入商店按2 查看任務按3 離開按0\n";
 							cin >> w;
 							if (w == 0)break;
@@ -381,6 +396,10 @@ void ingame()
 										{
 											cout << "要買幾個"<<buyitem<<"?\n";
 											cin >> itemcount;
+											if (cin.fail())
+											{
+												break;
+											}
 											while (itemcount > 99 or itemcount <= 0)
 											{
 												if (itemcount > 99)cout << "\n一次最大購買數量是99個! 請重新輸入數量\n";
@@ -393,15 +412,17 @@ void ingame()
 												SetColor(12, 0);
 												cout << "\n身上的艾斐幣不夠!\n\n";
 												SetColor();
+												save();
 											}
 											else
 											{
-												cout << "\n你買了" << buyitem << itemcount << "個,花了"<<total<<"艾斐幣" << endl << endl;
+												cout << "\n你買了" << buyitem << itemcount << "個,花了" << total << "艾斐幣" << endl << endl;
 												player.Money -= total;
-												int jo=0;
+												int jo = 0;
+												save();
 												for (int h = 0; h <= 99; h++)
 												{
-													if (bag[h] == buyitem)
+														if (bag[h] == buyitem)
 													{
 														bagcount[h] += itemcount;
 														jo = 1;
@@ -415,14 +436,13 @@ void ingame()
 													{
 														f = h;
 													}
-													bag[f + 1]=buyitem;
-													bagcount[f+1]=itemcount;
+													bag[f + 1] = buyitem;
+													bagcount[f + 1] = itemcount;
+													save();
 												}
 											}
-
 										}
 									}
-
 								}
 								else if (buyorsale == 2)//sale
 								{
@@ -433,7 +453,7 @@ void ingame()
 										{
 											if (bagcount[g] == 0)bag[g] = "none";
 										}
-										owo = 0;
+										 
 										cout << "道具名稱" << setw(12) << "數量" <<setw(12)<<"物品單價"<< endl << endl;
 										int f = 1;
 										for (int x = 0; x <= 99; x++)
@@ -448,20 +468,30 @@ void ingame()
 										cout << "輸入道具代碼來賣出道具 按下0返回\n";
 										cin >> ch;
 										if (ch == 0)break;
+										if (cin.fail())
+										{
+											break;
+										}
 										if (bag[ch - 1] == "none")cout << "\n錯誤!\n\n";
 										else
 										{
 											cout << "要賣幾個"<<bag[ch-1]<<"?\n";
 											int HowMuch;
 											cin >> HowMuch;
+
 											while (HowMuch < 0 or HowMuch>bagcount[ch-1])
 											{
 												if(HowMuch<0)cout << "\n請重新輸入!\n";
 												if(HowMuch>bagcount[ch-1])cout << "你沒有這麼多的" << bag[ch - 1]<<",請重新輸入!\n";
 												cin >> HowMuch;
+												if (cin.fail())
+												{
+													break;
+												}
 											}
 											bagcount[ch - 1] -= HowMuch;
 											player.Money += HowMuch * ItemPrize(bag[ch - 1]);
+											save();
 										}
 									}
 								}
@@ -569,13 +599,13 @@ void ingame()
 				else
 				{
 					cout << endl << "這裡沒有NPC\n\n";
-					owo = 0;
+					 
 					break;
 				}
-				owo = 0;
+				 
 				save();
 			}
-			owo = 0;
+			 
 		}
 		if (move == "L" or move == "l")
 		{
@@ -588,7 +618,7 @@ void ingame()
 			{
 				map--;
 			}
-			owo = 0;
+			 
 			save();
 		}
 		if (move == "N" or move == "n")
@@ -602,12 +632,12 @@ void ingame()
 			{
 				map++;
 			}
-			owo = 0;
+			 
 			save();
 		}
 		if (move == "K" or move == "k")
 		{
-			owo = 0;
+			 
 			system("cls");
 			while (1)
 			{
@@ -857,9 +887,9 @@ void ingame()
 		{
 			save();
 			system("cls");
-			owo = 0;
 			while (1)
 			{
+				 
 				cout << "您所擁有的道具:    STR   DEX   INT   LUK   Damage   Def" << endl;
 				for (int z = 1; clothitem[z] != "None"; z++)
 				{
@@ -976,7 +1006,7 @@ void ingame()
 		player.defsum = def1 + def2 + def3 + def4 + def5;
 		if (move == "S" or move == "s")
 		{
-			owo = 0;
+			 
 			system("cls");
 			save();
 			cout << "存檔完畢" << endl;
@@ -985,7 +1015,7 @@ void ingame()
 		{
 			save();
 			system("cls");
-			owo = 0;
+			 
 			cout << "\n名稱:" << player.name << endl;
 			cout << "職業:" << player.job << endl;
 			cout << "頭盔:" << player.Head << endl;

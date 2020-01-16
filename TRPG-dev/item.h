@@ -13,8 +13,18 @@ string armr(string job,int damage,int str,int dex,int iq)//不用理這裡
 	}
 }
 /////////////////////////////////////////更改下面就好
+typedef struct ItemData
+{
+	int id;
+	string name;
+	int damage;
+}ItemType;
+ItemType I[100];
 int Damage(string ItemName)
 {
+	I[0].id = 0;
+	I[0].name = "木劍";
+	I[0].damage = 35;
 	if (ItemName == "none")return 0;
 	if (ItemName == "匕首")return 30;
 	if (ItemName == "木杖")return 20;
