@@ -1,6 +1,4 @@
-﻿/* handsome Eric 2020.01.16 */
-
-#include <iostream>
+﻿#include <iostream>
 #include <fstream>
 #include "item.h"
 #include "map.h"
