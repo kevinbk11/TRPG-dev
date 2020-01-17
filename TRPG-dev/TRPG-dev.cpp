@@ -211,6 +211,7 @@ void save()
 int z;
 void ingame()
 {
+	ReadItemData();
 	int owo;
 	cout << endl;
 	while (1)

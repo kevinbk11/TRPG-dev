@@ -7,7 +7,7 @@ struct MAP
 	string MonsterName;
 };
 MAP MapData;
-int PrintMonster(int map)
+int PrintMonster(int map) // return 1 就是有怪 return 0 就是沒怪 也就不用cout了
 {
 	if (map == 0)
 	{
@@ -25,7 +25,7 @@ int PrintMonster(int map)
 	}
 
 }
-string Choose(int ck,int map)
+string Choose(int ck,int map) // map == 0 代表地圖編號 要注意的是map 0 是第一張地圖(探險發源地) ck是指怪物的代號
 {
 	if (map == 0)
 	{
@@ -80,7 +80,7 @@ string where(int MapNumber)
 		return "none";
 	}
 }
-int npc(int map)
+int npc(int map)//return 0 代表這裡沒有npc return 1 代表這裡有npc
 {
 	if (map == 0)
 	{

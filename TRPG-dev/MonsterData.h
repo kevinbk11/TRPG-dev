@@ -60,7 +60,7 @@ int HisEXP(string Monster)
 		return 40;
 	}
 }
-int HisSkill(string Monster)
+int HisSkill(string Monster) //1就是觸發技能 0 就是未觸發
 {
 	srand(time(NULL));
 	p = ((rand() * rand()) % 1648) % 100;
@@ -95,7 +95,7 @@ int HisSkill(string Monster)
 		}
 	}
 }
-int LV(string MonsterName)
+int LV(string MonsterName) //怪物等級 目前還不清楚要幹嘛
 {
 	if (MonsterName == "轉轉鳥")
 	{
@@ -114,7 +114,7 @@ int LV(string MonsterName)
 		return 4;
 	}
 }
-float GetSkillDamage(string HisSkillName)
+float GetSkillDamage(string HisSkillName) //怪物的技能傷害倍率
 {
 	if (HisSkillName == "二連啄")
 	{
@@ -141,7 +141,7 @@ int SpecialEffect(string Monster)
 	//	}
 	//}
 }
-string HisSkillName(string Monster)
+string HisSkillName(string Monster) //怪物的技能名稱
 {
 	if (Monster == "小石怪")
 	{
@@ -160,7 +160,7 @@ string HisSkillName(string Monster)
 		return "重捶";
 	}
 }
-string GetPrize(string MonsterName,int QuestOrNot ,int done)
+string GetPrize(string MonsterName,int QuestOrNot ,int done) //怪物掉落物 
 {
 	int p;
 	if (MonsterName == "轉轉鳥")
@@ -224,7 +224,7 @@ string GetPrize(string MonsterName,int QuestOrNot ,int done)
 		}
 	}
 }
-int GetCount(string MonsterName,int Quest)
+int GetCount(string MonsterName,int Quest) //掉落物掉幾個
 {
 	int p;
 	if (MonsterName == "轉轉鳥")
