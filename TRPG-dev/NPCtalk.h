@@ -36,7 +36,7 @@ int BuyOrNot(int MapNumber, int NPC)
 		}
 		else
 		{
-			return 0;//如果不是第三個仁 就不是商人
+			return 0;//如果不是第三個人 就不是商人
 		}
 	}
 	else

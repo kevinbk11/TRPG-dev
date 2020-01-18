@@ -15,25 +15,25 @@ string armr(string job,int damage,int str,int dex,int iq)//不用理這裡
 	}
 }
 /////////////////////////////////////////更改下面就好
-typedef struct ItemData
-{
-	int id;
-	string name;
-	int damage;
-}ItemType;
-ItemType I[100];
-void ReadItemData()
-{
-	w.open("ItemData.txt", ios::in);
-	for (int read = 0; 1; read++)
-	{
-		w >> I[read].id;
-		if (I[read].id == -1)break;
-		w >> I[read].name;
-		w >> I[read].damage;
-	}
-	w.close();
-}
+//typedef struct ItemData 未來可能會用
+//{
+//	int id;
+//	string name;
+//	int damage;
+//}ItemType;
+//ItemType I[100];
+//void ReadItemData()
+//{
+//	w.open("ItemData.txt", ios::in);
+//	for (int read = 0; 1; read++)
+//	{
+//		w >> I[read].id;
+//		if (I[read].id == -1)break;
+//		w >> I[read].name;
+//		w >> I[read].damage;
+//	}
+//	w.close();
+//}
 int Damage(string ItemName)
 {
 	if (ItemName == "none")return 0;

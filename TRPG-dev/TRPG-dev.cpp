@@ -211,7 +211,6 @@ void save()
 int z;
 void ingame()
 {
-	ReadItemData();
 	int owo;
 	cout << endl;
 	while (1)
@@ -906,6 +905,19 @@ void ingame()
 				cout << "輸入0返回 輸入道具左側的代碼換上該裝備" << endl;
 				int w;
 				cin >> w;
+				while (w >= 51)
+				{
+					cout << "\n請重新輸入\n";
+					cin >> w;
+					if (cin.fail())
+					{
+						break;
+					}
+				}
+				if (cin.fail())
+				{
+					break;
+				}
 				int kk = 1;
 				if (w == 0)
 				{
