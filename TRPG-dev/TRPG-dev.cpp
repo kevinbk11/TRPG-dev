@@ -1,13 +1,13 @@
-﻿#include <iostream>
 #include <fstream>
+#include <iomanip>
+#include <iostream>
+#include <math.h>
+#include <time.h>
+#include <windows.h>
 #include "item.h"
 #include "map.h"
-#include<iomanip>
-#include<time.h>
-#include"MonsterData.h"
-#include<windows.h>
-#include<math.h>
-#include"NPCtalk.h"
+#include "MonsterData.h"
+#include "NPCtalk.h"
 using namespace std;
 ofstream fo;
 ifstream fw;
