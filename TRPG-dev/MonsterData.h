@@ -21,6 +21,18 @@ int HisHP(string Monster)
 	{
 		return 177;
 	}
+	else if (Monster == "大石怪")
+	{
+		return 0;
+	}
+	else if (Monster == "摳摳龜")
+	{
+		return 0;
+	}
+	else if (Monster == "中古龜")
+	{
+		return 0;
+	}
 }
 int HisDamage(string Monster)
 {
@@ -40,6 +52,18 @@ int HisDamage(string Monster)
 	{
 		return 18;
 	}
+	else if (Monster == "大石怪")
+	{
+		return 0;
+	}
+	else if (Monster == "摳摳龜")
+	{
+		return 0;
+	}
+	else if (Monster == "中古巨龜")
+	{
+		return 0;
+	}
 }
 int HisEXP(string Monster)
 {
@@ -58,6 +82,18 @@ int HisEXP(string Monster)
 	else if (Monster == "哥布林戰士")
 	{
 		return 40;
+	}
+	else if (Monster == "大石怪")
+	{
+		return 0;
+	}
+	else if (Monster == "摳摳龜")
+	{
+		return 0;
+	}
+	else if (Monster == "中古巨龜")
+	{
+		return 0;
 	}
 }
 int HisSkill(string Monster) //1就是觸發技能 0 就是未觸發
@@ -94,6 +130,18 @@ int HisSkill(string Monster) //1就是觸發技能 0 就是未觸發
 			return 1;
 		}
 	}
+	else if (Monster == "大石怪")
+	{
+		return 0;
+	}
+	else if (Monster == "摳摳龜")
+	{
+		return 0;
+	}
+	else if (Monster == "中古巨龜")
+	{
+		return 0;
+	}
 }
 int LV(string MonsterName) //怪物等級 目前還不清楚要幹嘛
 {
@@ -112,6 +160,18 @@ int LV(string MonsterName) //怪物等級 目前還不清楚要幹嘛
 	else if (MonsterName == "哥布林戰士")
 	{
 		return 4;
+	}
+	else if (MonsterName == "大石怪")
+	{
+		return 6;
+	}
+	else if (MonsterName == "摳摳龜")
+	{
+		return 7;
+	}
+	else if (MonsterName == "中古巨龜")
+	{
+		return 9;
 	}
 }
 float GetSkillDamage(string HisSkillName) //怪物的技能傷害倍率
@@ -158,6 +218,18 @@ string HisSkillName(string Monster) //怪物的技能名稱
 	else if (Monster == "哥布林戰士")
 	{
 		return "重捶";
+	}
+	else if (Monster == "大石怪")
+	{
+		return "none";
+	}
+	else if (Monster == "摳摳龜")
+	{
+		return "none";
+	}
+	else if (Monster == "中古巨龜")
+	{
+		return "none";
 	}
 }
 string GetPrize(string MonsterName,int QuestOrNot ,int done) //怪物掉落物 

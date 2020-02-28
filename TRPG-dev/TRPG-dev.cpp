@@ -213,9 +213,9 @@ void ingame()
 {
 	int owo;
 	cout << endl;
+	srand(time(NULL));
 	while (1)
 	{
-		srand(time(NULL));
 		cout << "K來戰鬥 輸入N前往下一張地圖 輸入L前往上一張地圖 C查看角色資料 \nS手動存檔 Q來換裝備 P查看該地NPC I查看道具欄 輸入0離開" << endl;
 		cout << "\n目前所在地:" << where(map) << endl << endl;
 		save();
@@ -637,7 +637,6 @@ void ingame()
 		}
 		if (move == "K" or move == "k")
 		{
-			 
 			system("cls");
 			while (1)
 			{
@@ -654,7 +653,7 @@ void ingame()
 					int back = 0;
 					cin >> cs;
 					if (cs == 0)break;
-					Monster = Choose(cs, map);
+					Monster = Choose(cs, map,0);
 					system("cls");
 					if (cs == 0)
 					{
@@ -905,7 +904,7 @@ void ingame()
 				cout << "輸入0返回 輸入道具左側的代碼換上該裝備" << endl;
 				int w;
 				cin >> w;
-				while (w >= 51)
+				while (w >= 51 or w<0)
 				{
 					cout << "\n請重新輸入\n";
 					cin >> w;
@@ -923,7 +922,6 @@ void ingame()
 				{
 					cout << "\n返回\n\n";
 					break;
-					int kk = 0;
 				}
 				int f = -1;
 				if(clothitem[w] == "None")
